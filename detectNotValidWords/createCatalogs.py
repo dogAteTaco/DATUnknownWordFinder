@@ -1,4 +1,8 @@
-validFile ='detectNotValidWords/english'            
+import pathlib
+import re
+#name of the dictionary or valid word file
+name='english'
+validFile =re.sub('\\\\','/',str(pathlib.Path(__file__).parent.resolve()))+'/'+name            
 
 file = open(validFile, 'r') #File with valid words
 validLines = file.readlines()

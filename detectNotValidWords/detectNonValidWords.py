@@ -1,11 +1,11 @@
 import re
+import pathlib
 from alive_progress import alive_bar
 from datetime import datetime
 import io
 
 name = 'fellowship.txt' #File where you want to find invalid or unknown words
-relative= 'detectNotValidWords/' #path to where the files are
-validFile = relative+'english'  #dictionary with valid words
+relative= re.sub('\\\\','/',str(pathlib.Path(__file__).parent.resolve()))+'/' #path to where the files are
 
 print('Starting process at ',datetime.now())
 verifyFile = relative+name

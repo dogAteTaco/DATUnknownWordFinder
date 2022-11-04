@@ -1,0 +1,8 @@
+detectNotValidWords/english
+detectNotValidWords/dictionary
+detectNotValidWords/LOTR
+detectNotValidWords/fellowship.txt
+detectNotValidWords/returnKing.txt
+detectNotValidWords/twotowers.txt
+detectNotValidWords/invalids/invalidsFirstCompleteRun
+detectNotValidWords/detectNV.py

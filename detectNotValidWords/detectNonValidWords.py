@@ -4,14 +4,14 @@ from alive_progress import alive_bar
 from datetime import datetime
 import io
 
-name = 'fellowship.txt' #File where you want to find invalid or unknown words
+name = 'test' #File where you want to find invalid or unknown words
 relative= re.sub('\\\\','/',str(pathlib.Path(__file__).parent.resolve()))+'/' #path to where the files are
 
 print('Starting process at ',datetime.now())
 verifyFile = relative+name
 notValidFile = relative+'invalids/notValid'+name
 
-pattern = r'[^A-Za-zÀ-ÿÀ-ÖØ-öø-ÿ0-9 -]+' #Pattern of accepted characters
+pattern = r'[^A-Za-zÀ-ÿÀ-ÖØ-öø-ÿ0-9\' -]+' #Pattern of accepted characters
 
 
 file = io.open(verifyFile, mode='r',encoding='utf-8') #File where you want to find invalid words
@@ -22,33 +22,7 @@ splitted=[]
 for line in text: #Reads every line of the text file to check
     for sline in line.split():
         splitted.append(re.sub(pattern,'',sline)) #Removes any special characters
-a = []
-b = []
-c = []
-d = []
-e = []
-f = []
-g = []
-h = []
-i = []
-j = []
-k = []
-l = []
-m = []
-n = []
-o = []
-p = []
-q = []
-r = []
-s = []
-t = []
-u = []
-v = []
-w = []
-x = []
-y = []
-z = []
-other = []
+a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, other = [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
 
 #separates the word in the corresponding list
 with alive_bar(len(splitted)) as bar:
@@ -305,7 +279,10 @@ invalid = list(dict.fromkeys(invalid))
 tempFile=notValidFile
 io.open(tempFile, 'w',encoding='utf-8').close()
 for word in invalid:
-    print(word)
+    while word.endswith('\''):
+        word = word.removesuffix('\'')
+    while word.startswith('\''):
+        word = word.removeprefix('\'')
     temp = io.open(tempFile, mode='a',encoding='utf-8')
     temp.write(word+'\n')
     temp.close()
